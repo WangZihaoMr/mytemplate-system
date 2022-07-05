@@ -6,7 +6,8 @@ export default {
   state: {
     token: '',
     authorization: getItem('authorization') || '',
-    userInfo: {}
+    userInfo: {},
+    menus: []
   },
   mutations: {
     // 存储token到vuex和本地
@@ -22,6 +23,10 @@ export default {
     setAuthorization(state, authorization) {
       state.authorization = authorization
       setItem('authorization', authorization)
+    },
+    // 存储用户菜单数据
+    setMenus(state, menus) {
+      state.menus = menus
     }
   },
   actions: {
@@ -49,9 +54,10 @@ export default {
       router.push('/login')
     },
     // 用户菜单数据
-    async userMneus({ commit }) {
+    async userMenus({ commit }) {
       const menus = await UserApi.getMenus()
       console.log('menus===>', menus);
+      commit('setMenus', menus)
     }
   }
 }

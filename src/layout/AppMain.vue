@@ -9,5 +9,4 @@
 import NavBar from './NavBar'
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

@@ -21,7 +21,7 @@ const getUserInfo = () => {
 
 // 用户权限
 const getMenus = () => {
-  return request({ url: '/sys/menu', method: 'GET' })
+  return request({ url: '/sys/menu/nav', method: 'GET' })
 }
 
 // 导出请求
