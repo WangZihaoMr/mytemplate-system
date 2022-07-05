@@ -15,7 +15,6 @@ instance.interceptors.request.use(
   function (config) {
     const token = store.getters.token
     if (token) config.headers.Authorization = token
-
     return config
   },
   function (error) {
@@ -27,7 +26,10 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   function (response) {
     const { data } = response
-    store.commit('user/setToken', response.headers.authorization)
+    if (response.headers.authorization) {
+      store.commit('user/setAuthorization', response.headers.authorization)
+    }
+
     console.log(data)
     return data
   },

@@ -6,5 +6,8 @@ import store from './store'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
+// 页面鉴权
+import './permission'
+
 const app = createApp(App)
 app.use(ElementPlus).use(store).use(router).mount('#app')

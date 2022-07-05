@@ -16,12 +16,18 @@ const userLogin = (data) => {
 
 // 用户信息
 const getUserInfo = () => {
-  return request({ url: 'sys/userInfo', method: 'GET' })
+  return request({ url: '/sys/userInfo', method: 'GET' })
+}
+
+// 用户权限
+const getMenus = () => {
+  return request({ url: '/sys/menu', method: 'GET' })
 }
 
 // 导出请求
 export default {
   getCodeApi,
   userLogin,
-  getUserInfo
+  getUserInfo,
+  getMenus
 }

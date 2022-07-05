@@ -64,7 +64,7 @@ const codeUrl = ref()
 const handleGetCode = async () => {
   const codeData = await store.dispatch('user/getCode')
   codeUrl.value = codeData.data.captchaImg
-  loginForm.token = store.getters.token
+  loginForm.token = codeData.data.token
 }
 // 首次加载Code码
 handleGetCode()
@@ -74,6 +74,7 @@ const handleSubmit = async () => {
   if (!loginFormRef.value) return
   await loginFormRef.value.validate(async (valid) => {
     if (valid) {
+      console.log(loginForm, 'loginForm')
       const userLoginData = await UserApi.userLogin(loginForm)
       if (!userLoginData) return
       const userInfoData = await store.dispatch('user/userInfo')
